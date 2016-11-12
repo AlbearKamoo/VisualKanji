@@ -108,4 +108,4 @@ app.get('/', function(req, res,next) {
 // Make files in the public directory acessible
 app.use(express.static(__dirname + '/public'))
 
-server.listen(process.env.port || 4200);
+server.listen(process.env.PORT || 4200);
