@@ -61,11 +61,16 @@ function getImageURL(meaning, callback){
 }
 
 function setImage(response){
-  for(var i=0;i<20;i++){
-    if(response["hits"][i]["likes"] >= 20){
-      imgSrc = response["hits"][i]["webformatURL"];
-      break;
+  if(response["hits"].length >= 10){
+    for(var i=0;i<10;i++){
+      if(response["hits"][i]["likes"] >= 20){
+        imgSrc = response["hits"][i]["webformatURL"];
+        break;
+      }
     }
+  }
+  else{
+    imgSrc = response["hits"][0]["webformatURL"];
   }
 
   document.getElementById("meaningPic").src = imgSrc;
