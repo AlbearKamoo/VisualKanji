@@ -1,7 +1,7 @@
 var literal = "kanji";
 var meaning = "meaning";
 
-var socket = io.connect('http://localhost:4200');
+var socket = io(location.origin);
 socket.on('connect', function(data) {
     socket.emit('join', 'Hello from client');
 });
