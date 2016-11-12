@@ -1,0 +1,19 @@
+{
+  "name": "visualkanji",
+  "version": "1.0.0",
+  "description": "a simple tool for visually memorizing kanji meanings",
+  "main": "server.js",
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Marcelo Autran",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mongodb": "^2.2.11",
+    "socket.io": "^1.5.1"
+  }
+}
