@@ -1,5 +1,7 @@
 var literal = "kanji";
 var meaning = "meaning";
+var imageSources = [];
+var index = 0;
 
 var socket = io(location.origin);
 socket.on('connect', function(data) {
@@ -61,19 +63,50 @@ function getImageURL(meaning, callback){
 }
 
 function setImage(response){
-  if(response["hits"].length >= 10){
-    for(var i=0;i<10;i++){
-      if(response["hits"][i]["likes"] >= 20){
-        imgSrc = response["hits"][i]["webformatURL"];
-        break;
+  imageSources = []
+  if(response["hits"].length >= 15){
+    for(var i=0;i<15;i++){
+      if(response["hits"][i]["likes"] >= 10){
+        imageSources.push(response["hits"][i]["webformatURL"]);
       }
     }
   }
+  if(response["hits"].length >= 5){
+    for(var i=0;i<5;i++){
+      imageSources.push(response["hits"][i]["webformatURL"])
+    }
+  }
   else{
-    imgSrc = response["hits"][0]["webformatURL"];
+    for(var i=0;i<reponse["hits"].length;i++){
+      imageSources.push(response["hits"][i]["webformatURL"])
+    }
   }
 
-  document.getElementById("meaningPic").src = imgSrc;
+  document.getElementById("meaningPic").src = imageSources[0];
+  console.log(imageSources[0])
+  index = 0;
+}
+
+function nextImage(){
+  if(index + 1 >= imageSources.length){
+    document.getElementById("meaningPic").src = imageSources[0];
+    index = 0;
+  }
+  else{
+    document.getElementById("meaningPic").src = imageSources[index + 1];
+    index = index + 1;
+  }
+}
+
+function previousImage(){
+  if(index - 1 < 0){
+    document.getElementById("meaningPic").src = imageSources[0];
+    index = 0;
+  }
+  else{
+    document.getElementById("meaningPic").src = imageSources[index - 1];
+    index = index - 1;
+  }
 }
 
 function showMeaning(element){

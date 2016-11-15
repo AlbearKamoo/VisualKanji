@@ -1,3 +1,18 @@
+@font-face {
+  font-family: kanjiFont;
+  src: url(font_1_ant-kaku.ttf);
+}
+
+@font-face {
+  font-family: wordFont;
+  src: url(Boku2-Regular.otf);
+}
+
+@font-face {
+  font-family: meaningsFont;
+  src: url(irohamaru-mikami-Regular.ttf);
+}
+
 body{
   background-color: #F2FAFC;
 }
@@ -13,8 +28,6 @@ h2 {
 h3{
   margin: 5px;
 }
-
-
 
 a {
   margin: 15px 15px 0px 15px;
@@ -34,21 +47,6 @@ i {
   width:100px;
   height:22px;
   overflow:hidden;
-}
-
-@font-face {
-  font-family: kanjiFont;
-  src: url(font_1_ant-kaku.ttf);
-}
-
-@font-face {
-  font-family: wordFont;
-  src: url(Boku2-Regular.otf);
-}
-
-@font-face {
-  font-family: meaningsFont;
-  src: url(irohamaru-mikami-Regular.ttf);
 }
 
 div{
