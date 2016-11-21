@@ -25,12 +25,10 @@ socket.on('words', function(data){
   var reading
   var meanings
 
-  for(var i=0;i<data['words'].length;i++){
+  for(var i=0;i<3;i++){
     div = document.createElement('div')
-    div.className = 'col-md-3 wordDisplay'
-    if(i == 0){
-      div.id = 'first-word'
-    }
+    div.className = 'wordDisplay'
+
     word = document.createElement('h2')
     word.innerHTML = data['words'][i]['word'];
     reading = document.createElement('p');
@@ -44,10 +42,6 @@ socket.on('words', function(data){
     div.appendChild(reading)
     div.appendChild(meanings)
     document.getElementById('wordContainer').appendChild(div)
-
-    if(i==2){
-      break;
-    }
   }
   //  document.getElementById('word').innerHTML = data['words'][0]['word'];
   //  document.getElementById('reading').innerHTML = data['words'][0]['reading'];
@@ -56,10 +50,10 @@ socket.on('words', function(data){
 
 function getImageURL(meaning, callback){
   url = "https://pixabay.com/api/?key=3742673-c8ba4f73bb895d2b2b38cbd77&q="+encodeURIComponent(meaning);
-  console.log(url);
   xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     if (xhr.readyState == XMLHttpRequest.DONE) {
+      //console.log(xhr.responseText)
       callback(xhr.response)
     }
   }
@@ -70,26 +64,20 @@ function getImageURL(meaning, callback){
 
 function setImage(response){
   imageSources = []
-
-  if(response["totalHits"] == 0){
-    alert("No images found for this Kanji meaning");
-    return;
-  }
-
-  if(response["totalHits"] >= 15){
+  if(response["hits"].length >= 15){
     for(var i=0;i<15;i++){
       if(response["hits"][i]["likes"] >= 10){
         imageSources.push(response["hits"][i]["webformatURL"]);
       }
     }
   }
-  if(response["totalHits"] >= 5){
+  if(response["hits"].length >= 5){
     for(var i=0;i<5;i++){
       imageSources.push(response["hits"][i]["webformatURL"])
     }
   }
   else{
-    for(var i=0;i<response["totalHits"];i++){
+    for(var i=0;i<reponse["hits"].length;i++){
       imageSources.push(response["hits"][i]["webformatURL"])
     }
   }

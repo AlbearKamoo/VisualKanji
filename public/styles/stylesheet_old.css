@@ -22,26 +22,22 @@ h2 {
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 0px;
-  font-size: 38px;
-  font-weight: bold;
+  font-size: 36px;
 }
 
 h3{
   margin: 5px;
-  font-weight: bold;
 }
 
 a {
-  vertical-align: bottom;
-  margin: 15px;
-  margin-left: 0px;
-  margin-right: 50px;
+  margin: 15px 15px 0px 15px;
   background-color: white;
-  font-size:14px;
+  font-size:13px;
   text-decoration: none;
   line-height:1.4;
   color:#777;
   display: inline-block;
+  float:left;
   padding:8px 12px 10px;
   border:1px solid #ccc;
 }
@@ -53,7 +49,15 @@ i {
   overflow:hidden;
 }
 
+div{
+  font-family: kanjiFont, "Arial", sans-serif;
+}
+
 button {
+  display: inline-block;
+  /*vertical-align: bottom;*/
+  margin: 10px;
+  margin-top: 0px;
   background-color: #386EC4;
   border: none;
   color: white;
@@ -61,30 +65,53 @@ button {
   text-align: center;
   text-decoration: none;
   font-family: wordFont, "Arial", sans-serif;
-  font-size: 18px;
+  font-size: 16px;
+}
+
+#kanjiContainer{
+  margin: auto;
+  min-height: 71px;
+}
+
+#wordContainer{
+  display: inline-block;
+  position: relative;
+  top: 0%;
+  bottom: 0%;
+  right: 0%;
+  left: 0%;
+  margin-left: 30%;
+  margin-right: 10%;
+  width: 40%;
+}
+
+#APICredit {
+  display: inline-block;
+  margin:auto;
+}
+
+#meaningPic {
+  display: inline-block;
+  margin-left: 30%;
+  width: 40%;
+  height: 32em;
 }
 
 #kanji{
-  font-family: kanjiFont;
-  color: black;
-  text-align: center;
-  padding-top: 5px;
+  margin: auto;
+  max-width: 30%;
   font-size: 60px;
-}
-
-#first-word{
-  margin-left: 10%;
-}
-
-.nav-button{
-  margin: 8px;
+  text-align: center;
 }
 
 .wordDisplay{
   display: inline-block;
-  margin: 12px;
+  margin-top: 2px;
+  margin-left: 6px;
+  margin-right: 6px;
+  margin-bottom: 10px;
+  width: 30%;
   font-family: wordFont, "Arial", sans-serif;
-  color: black;
   text-align: center;
   vertical-align: top;
   word-wrap: break-word;
@@ -101,5 +128,4 @@ button {
 
 .wordMeanings{
   font-family: meaningsFont;
-  font-size: 1.2rem;
 }

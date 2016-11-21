@@ -1,28 +1,52 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" type="text/css" href="/styles/stylesheet.css">
-  <div id="kanjiContainer">
-    <p id="kanji" onmouseover="showMeaning(this)" onmouseout="showLiteral(this)">kanji</p>
-  </div>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/stylesheet.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
+  </head>
 
-  <img id="meaningPic" src="http://img01.deviantart.net/5b3d/i/2006/212/c/3/mizu_by_drake_chan.jpg" />
-  <div id="APICredit">
-    <a href="https://pixabay.com/" >
-      Powered by <i><img src="/images/logo.png"></i>
-    </a>
-  </div>
+  <body>
 
-  <div id = "wordContainer">
-  </div>
-  <button type="button" onclick="refresh()">New Kanji!</button>
+    <div class="container">
+      <h1 id="kanji" onmouseover="showMeaning(this)" onmouseout="showLiteral(this)">kanji</p>
+    </div>
 
+    <div class="container-fluid">
+      <div class="row" style="position: relative">
+        <div id="APICredit" class="col-md-1 offset-md-2">
 
-</head>
-<body>
+        </div>
+        <div class="col-md-6" style="text-align:center">
+          <span class="text-nowrap">
+            <button type="button" class="nav-button" onclick="previousImage()">P</button>
+            <img id="meaningPic" style="width:83%; max-height: 32em" src="http://img01.deviantart.net/5b3d/i/2006/212/c/3/mizu_by_drake_chan.jpg" />
+            <button type="button" class="nav-button" onclick="nextImage()">N</button>
+          </span>
+        </div>
+        <div class="col-md-1">
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div id="wordContainer" class="row">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <button type="button" onclick="refresh()">New Kanji!</button>
+          <a href="https://pixabay.com/" >
+          Images by <i><img src="images/logo.png"></i>
+          </a>
+        </div>
+      </div>
+    </div>
 
   <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-  <script src="/scripts/client.js" type="text/javascript"></script>
-
+  <script src="/scripts/client.js"></script>
 </body>
 </html>
