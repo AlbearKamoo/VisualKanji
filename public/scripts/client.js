@@ -60,7 +60,12 @@ function getImageURL(meaning, callback){
   xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     if (xhr.readyState == XMLHttpRequest.DONE) {
-      callback(xhr.response)
+      if(xhr.response["totalHits"] == 0){
+        getImageURL(meaning, callback);
+      }
+      else{
+        callback(xhr.response);
+      }
     }
   }
   xhr.responseType = "json"
