@@ -65,6 +65,7 @@ button {
 }
 
 #kanji{
+  margin: 0px 150px 0px 150px;
   font-family: kanjiFont;
   color: black;
   text-align: center;

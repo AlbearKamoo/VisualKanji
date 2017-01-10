@@ -85,8 +85,6 @@ function parseResponse(body, callback){
   callback(object)
 }
 
-
-
 // On coonection with client, execute main service routine
 io.on('connection', function(client) {
   console.log('Client connected...');
