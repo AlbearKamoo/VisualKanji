@@ -4,9 +4,11 @@ var imageSources = [];
 var index = 0;
 
 var socket = io(location.origin);
-socket.on('connect', function(data) {
-    socket.emit('join', 'Hello from client');
-});
+// socket.on('connect', function(data) {
+//     socket.emit('join', 'Hello from client');
+// });
+
+socket.emit('join', 'Hello from client');
 
 socket.on('kanji', function(data){
   literal = data['literal']
