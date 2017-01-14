@@ -4,11 +4,9 @@ var imageSources = [];
 var index = 0;
 
 var socket = io(location.origin);
-// socket.on('connect', function(data) {
-//     socket.emit('join', 'Hello from client');
-// });
-
-socket.emit('join', 'Hello from client');
+socket.on('connect', function(data) {
+    socket.emit('join', 'Hello from client');
+});
 
 socket.on('kanji', function(data){
   literal = data['literal']
@@ -19,6 +17,10 @@ socket.on('kanji', function(data){
     meaning = capitalizeFirst(data['meaning'][0]);
   }
   getImageURL(meaning, setImage);
+})
+
+socket.on('retry', function(data) {
+    socket.emit('join', 'New kanji please!');
 })
 
 socket.on('words', function(data){
@@ -119,8 +121,8 @@ function nextImage(){
 
 function previousImage(){
   if(index - 1 < 0){
-    document.getElementById("meaningPic").src = imageSources[0];
-    index = 0;
+    document.getElementById("meaningPic").src = imageSources[imageSources.length-1];
+    index = imageSources.length-1;
   }
   else{
     document.getElementById("meaningPic").src = imageSources[index - 1];

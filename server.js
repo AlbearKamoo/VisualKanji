@@ -19,7 +19,7 @@ function queryMongo(callback){
   });
 }
 
-// Retrives a random document from mongo database using an aggregator
+// Retrieves a random document from mongo database using an aggregator
 function getRandomKanji(db, callback){
   var random = db.collection('kanji').aggregate([{ $sample: { size: 1 }}])
   random.each(function(err, doc) {
@@ -90,9 +90,14 @@ io.on('connection', function(client) {
   console.log('Client connected...');
   client.on('join', function(data) {
     queryMongo(function(doc){
-      client.emit('kanji', doc)
       loadWords(doc['literal'], function(words){
-        client.emit('words', words)
+        if(words['words'].length == 0){
+            client.emit('retry', words);
+        }
+        else{
+            client.emit('kanji', doc);
+            client.emit('words', words)
+        }
       })
     })
   });

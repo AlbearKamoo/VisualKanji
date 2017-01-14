@@ -77,6 +77,12 @@ button {
   margin-left: 10%;
 }
 
+.center-img {
+  display:inline-block;
+  width: 75%;
+  max-height: 32em;
+}
+
 .nav-button{
   margin: 8px;
 }
