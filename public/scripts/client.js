@@ -65,10 +65,7 @@ function getImageURL(meaning, callback){
   xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     if (xhr.readyState == XMLHttpRequest.DONE) {
-      if(xhr.response["totalHits"] == 0){
-        getImageURL(meaning, callback);
-      }
-      else{
+      if(xhr.staus = 200){
         callback(xhr.response);
       }
     }
@@ -83,6 +80,7 @@ function setImage(response){
 
   if(response["totalHits"] == 0){
     alert("No images found for this Kanji meaning");
+    document.getElementById("meaningPic").src = "/images/crying.png";
     return;
   }
 
