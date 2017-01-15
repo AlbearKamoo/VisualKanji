@@ -28,6 +28,9 @@ socket.on('words', function(data){
   var word
   var reading
   var meanings
+  var container = document.getElementById('wordContainer');
+
+  container.innerHTML = '';
 
   for(var i=0;i<data['words'].length;i++){
     div = document.createElement('div')
@@ -42,12 +45,13 @@ socket.on('words', function(data){
     reading.innerHTML = data['words'][i]['reading'];
     meanings = document.createElement('h3')
     meanings.className = 'wordMeanings';
-    meanings.innerHTML = data['words'][i]['meanings'];
+    var merged = [].concat.apply([], data['words'][i]['meanings']);
+    meanings.innerHTML = merged.join(', ');
 
     div.appendChild(word);
     div.appendChild(reading)
     div.appendChild(meanings)
-    document.getElementById('wordContainer').appendChild(div)
+    container.appendChild(div)
 
     if(i==2){
       break;

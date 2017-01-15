@@ -89,6 +89,7 @@ function parseResponse(body, callback){
 io.on('connection', function(client) {
   console.log('Client connected...');
   client.on('join', function(data) {
+    console.log(data);
     queryMongo(function(doc){
       loadWords(doc['literal'], function(words){
         if(words['words'].length == 0){
