@@ -108,6 +108,9 @@ function setImage(response){
 }
 
 function nextImage(){
+  if(imageSources.length == 0){
+      return;
+  }
   if(index + 1 >= imageSources.length){
     document.getElementById("meaningPic").src = imageSources[0];
     index = 0;
@@ -119,6 +122,9 @@ function nextImage(){
 }
 
 function previousImage(){
+  if(imageSources.length == 0){
+      return;
+  }
   if(index - 1 < 0){
     document.getElementById("meaningPic").src = imageSources[imageSources.length-1];
     index = imageSources.length-1;

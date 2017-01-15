@@ -17,16 +17,12 @@
 
     <div class="container-fluid">
       <div class="row" style="position: relative">
-        <div id="APICredit" class="col-md-1 offset-md-2">
-
-        </div>
-        <div class="col-md-6 text-nowrap" style="text-align:center">
-            <button type="button" class="nav-button" onclick="previousImage()">P</button>
-            <img id="meaningPic" class="center-img" src="/images/gear.gif" />
-            <button type="button" class="nav-button" onclick="nextImage()">N</button>
-        </div>
-        <div class="col-md-1">
-
+        <div class="col-md-6 offset-md-3 text-nowrap" style="text-align:center">
+            <!-- <button type="button" class="nav-button" onclick="previousImage()">P</button> -->
+            <input type="image" class="nav-img" onclick="previousImage()" src="/images/previous.png">
+            <img id="meaningPic" class="center-img" src="/images/loading.gif" />
+            <input type="image" class="nav-img" onclick="nextImage()" src="/images/next.png">
+            <!-- <button type="button" class="nav-button" onclick="nextImage()">N</button> -->
         </div>
       </div>
     </div>
