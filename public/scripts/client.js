@@ -53,9 +53,6 @@ socket.on('words', function(data){
       break;
     }
   }
-  //  document.getElementById('word').innerHTML = data['words'][0]['word'];
-  //  document.getElementById('reading').innerHTML = data['words'][0]['reading'];
-  //  document.getElementById('meanings').innerHTML = data['words'][0]['meanings'];
 })
 
 function getImageURL(meaning, callback){

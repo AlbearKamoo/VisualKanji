@@ -65,7 +65,7 @@ button {
 }
 
 #kanji{
-  margin: 0px 150px 0px 150px;
+  margin: 0px 150px 5px 150px;
   font-family: kanjiFont;
   color: black;
   text-align: center;
@@ -80,7 +80,7 @@ button {
 .center-img {
   display:inline-block;
   width: 75%;
-  max-height: 32em;
+  max-height: 36em;
 }
 
 .nav-button{
