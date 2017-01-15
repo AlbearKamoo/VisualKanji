@@ -106,7 +106,6 @@ io.on('connection', function(client) {
 // Serve HTML page when GET request is received from client
 app.get('/', function(req, res,next) {
   res.sendFile(__dirname + '/index.html');
-  //res.sendFile(__dirname+'/BootstrapTest.html')
 });
 
 // Make files in the public directory acessible
