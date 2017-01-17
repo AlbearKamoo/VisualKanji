@@ -66,6 +66,7 @@ function getImageURL(meaning, callback){
   xhr.onreadystatechange = function() {
     if (xhr.readyState == XMLHttpRequest.DONE) {
       if(xhr.staus = 200){
+        console.log(xhr.status);
         callback(xhr.response);
       }
     }
