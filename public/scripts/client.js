@@ -33,12 +33,14 @@ socket.on('words', function(data){
   container.innerHTML = '';
 
   for(var i=0;i<data['words'].length;i++){
+    column = document.createElement('div')
     div = document.createElement('div')
-    div.className = 'col-md-3 wordDisplay'
-    if(i == 0){
-      div.id = 'first-word'
-    }
-    word = document.createElement('h2')
+    column.className = 'col-md-4';
+    div.className = 'wordDisplay';
+    // if(i == 0){
+    //   div.id = 'first-word'
+    // }
+    word = document.createElement('h2');
     word.innerHTML = data['words'][i]['word'];
     reading = document.createElement('p');
     reading.className = 'kanaReading';
@@ -49,9 +51,10 @@ socket.on('words', function(data){
     meanings.innerHTML = merged.join(', ');
 
     div.appendChild(word);
-    div.appendChild(reading)
-    div.appendChild(meanings)
-    container.appendChild(div)
+    div.appendChild(reading);
+    div.appendChild(meanings);
+    column.appendChild(div);
+    container.appendChild(column)
 
     if(i==2){
       break;

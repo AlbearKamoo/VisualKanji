@@ -1,67 +1,69 @@
 @font-face {
-  font-family: kanjiFont;
-  src: url(font_1_ant-kaku.ttf);
+    font-family: kanjiFont;
+    src: url(font_1_ant-kaku.ttf);
 }
 
 @font-face {
-  font-family: wordFont;
-  src: url(Boku2-Regular.otf);
+    font-family: wordFont;
+    src: url(Boku2-Regular.otf);
 }
 
 @font-face {
-  font-family: meaningsFont;
-  src: url(irohamaru-mikami-Regular.ttf);
+    font-family: meaningsFont;
+    src: url(irohamaru-mikami-Regular.ttf);
 }
 
 body{
-  background-color: #F2FAFC;
+    background-color: #F2FAFC;
 }
 
 h2 {
-  margin-top: 5px;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: 0px;
-  font-size: 38px;
-  font-weight: bold;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 0px;
+    font-size: 38px;
+    font-weight: bold;
 }
 
 h3{
-  margin: 5px;
-  font-weight: bold;
+    margin: 5px;
+    font-weight: bold;
 }
 
 a {
-  vertical-align: bottom;
-  margin: 15px;
-  margin-left: 0px;
-  margin-right: 50px;
-  background-color: white;
-  font-size:14px;
-  text-decoration: none;
-  line-height:1.4;
-  color:#777;
-  display: inline-block;
-  padding:8px 12px 10px;
-  border:1px solid #ccc;
+    display: inline-block;
+    float: right;
+    vertical-align: bottom;
+    margin: 5px;
+    border:1px solid #ccc;
+    padding:8px 12px 10px;
+    background-color: white;
+    color:#777;
+    font-size:14px;
+    text-decoration: none;
+    line-height:1.4;
 }
 
 i {
-  display:block;
-  width:100px;
-  height:22px;
-  overflow:hidden;
+    display:block;
+    width:100px;
+    height:22px;
+    overflow:hidden;
 }
 
 button {
-  background-color: #386EC4;
-  border: none;
-  color: white;
-  padding: 15px 20px;
-  text-align: center;
-  text-decoration: none;
-  font-family: wordFont, "Arial", sans-serif;
-  font-size: 18px;
+    float: right;
+    width: 100%;
+    margin: 5px;
+    border: none;
+    padding: 15px 15px;
+    background-color: #386EC4;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-family: wordFont, "Arial", sans-serif;
+    font-size: 18px;
 }
 
 input:focus{
@@ -69,27 +71,29 @@ input:focus{
 }
 
 #kanji{
-  margin: 0px 150px 5px 150px;
-  font-family: kanjiFont;
-  color: black;
-  text-align: center;
-  padding-top: 5px;
-  font-size: 60px;
+    margin: 0px 150px 5px 150px;
+    padding-top: 5px;
+    font-family: kanjiFont;
+    color: black;
+    text-align: center;
+    font-size: 60px;
 }
 
-#first-word{
-  margin-left: 10%;
+#wordContainer{
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: center;
 }
 
 .center-img {
-  display:inline-block;
-  width: 75%;
-  max-height: 32em;
+    display:inline-block;
+    width: 75%;
+    max-height: 32em;
 }
 
 .nav-img{
-    vertical-align: middle;
     margin: 8px;
+    vertical-align: middle;
 }
 
 .nav-img:active {
@@ -99,30 +103,31 @@ input:focus{
     border-color: blue;
 }
 
-.nav-button{
-  margin: 8px;
-}
-
 .wordDisplay{
-  display: inline-block;
-  margin: 12px;
-  font-family: wordFont, "Arial", sans-serif;
-  color: black;
-  text-align: center;
-  vertical-align: top;
-  word-wrap: break-word;
-  padding: 4px;
-  border-style: solid;
-  border-width: 2px;
-  border-color: #6FBFBB;
+    display: inline-block;
+    width: 100%;
+    margin-top: 12px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #6FBFBB;
+    padding: 4px;
+    color: black;
+    font-family: wordFont, "Arial", sans-serif;
+    text-align: center;
+    vertical-align: top;
+    word-wrap: break-word;
+
 }
 
 .kanaReading{
-  margin: 0px;
-  font-size: 28px;
+    margin: 0px;
+    font-size: 28px;
 }
 
 .wordMeanings{
-  font-family: meaningsFont;
-  font-size: 1.2rem;
+    width: 75%;
+    margin: auto;
+    margin-bottom: 8px;
+    font-family: meaningsFont;
+    font-size: 1.2rem;    
 }
