@@ -32,21 +32,23 @@ socket.on('words', function(data){
 
   container.innerHTML = '';
 
-  for(var i=0;i<data['words'].length;i++){
+  for(var i=0;i<data['words'].length && i<3;i++){
     column = document.createElement('div')
     div = document.createElement('div')
     column.className = 'col-md-4';
     div.className = 'wordDisplay';
-    // if(i == 0){
-    //   div.id = 'first-word'
-    // }
+
     word = document.createElement('h2');
     word.innerHTML = data['words'][i]['word'];
+
     reading = document.createElement('p');
     reading.className = 'kanaReading';
     reading.innerHTML = data['words'][i]['reading'];
+
     meanings = document.createElement('h3')
     meanings.className = 'wordMeanings';
+
+    // Prettify word meanings
     var merged = [].concat.apply([], data['words'][i]['meanings']);
     meanings.innerHTML = merged.join(', ');
 
@@ -54,11 +56,7 @@ socket.on('words', function(data){
     div.appendChild(reading);
     div.appendChild(meanings);
     column.appendChild(div);
-    container.appendChild(column)
-
-    if(i==2){
-      break;
-    }
+    container.appendChild(column);
   }
 })
 
@@ -69,7 +67,6 @@ function getImageURL(meaning, callback){
   xhr.onreadystatechange = function() {
     if (xhr.readyState == XMLHttpRequest.DONE) {
       if(xhr.staus = 200){
-        console.log(xhr.status);
         callback(xhr.response);
       }
     }
@@ -95,7 +92,7 @@ function setImage(response){
       }
     }
   }
-  if(response["totalHits"] >= 5){
+  else if(response["totalHits"] >= 5){
     for(var i=0;i<5;i++){
       imageSources.push(response["hits"][i]["webformatURL"])
     }
@@ -107,7 +104,6 @@ function setImage(response){
   }
 
   document.getElementById("meaningPic").src = imageSources[0];
-  console.log(imageSources[0])
   index = 0;
 }
 

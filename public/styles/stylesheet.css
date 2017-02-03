@@ -71,11 +71,11 @@ input:focus{
 }
 
 #kanji{
-    margin: 0px 150px 5px 150px;
+    margin: 5px 150px 5px 150px;
     padding-top: 5px;
-    font-family: kanjiFont;
-    color: black;
     text-align: center;
+    color: black;
+    font-family: kanjiFont;
     font-size: 60px;
 }
 
@@ -116,7 +116,6 @@ input:focus{
     text-align: center;
     vertical-align: top;
     word-wrap: break-word;
-
 }
 
 .kanaReading{
@@ -129,5 +128,5 @@ input:focus{
     margin: auto;
     margin-bottom: 8px;
     font-family: meaningsFont;
-    font-size: 1.2rem;    
+    font-size: 1.2rem;
 }
