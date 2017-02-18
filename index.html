@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
     <link rel="stylesheet" href="/styles/stylesheet.css">
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRlgA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
 </head>
 
@@ -13,39 +13,45 @@
 
     <div class="container">
         <h1 id="kanji" onmouseover="showMeaning(this)" onmouseout="showLiteral(this)">kanji</p>
-        </div>
+    </div>
 
         <div class="container-fluid">
             <div class="row" style="position: relative">
-                <div class="col-md-6 offset-md-3 text-nowrap" style="text-align:center">
+                <div class="col-lg-6 offset-lg-3 text-nowrap" style="text-align:center">
                     <input type="image" class="nav-img" onclick="previousImage()" src="/images/previousArrow.png">
                     <img id="meaningPic" class="center-img" src="/images/loading.gif" />
                     <input type="image" class="nav-img" onclick="nextImage()" src="/images/nextArrow.png">
                 </div>
             </div>
+        </div>
 
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6 offset-md-3">
-                        <div id="wordContainer" class="row">
-                        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <!-- <div class="col-lg-6 offset-lg-3">
+                    <div id="wordContainer" class="row">
                     </div>
-                    <div class="col-md-1">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <button type="button" onclick="refresh()">New Kanji!</button>
-                            </div>
-                            <div class="col-md-12">
-                                <a href="https://pixabay.com/" >
-                                    Images by <i><img src="images/logo.png"></i>
-                                </a>
-                            </div>
+                </div> -->
+                <div id="wordContainer">
+                    <div class="col-lg-9">
+                    </div>
+                </div>
+                <div class="col-lg-2" align="center">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <button type="button" onclick="refresh()">New Kanji!</button>
+                        </div>
+                        <div class="col-lg-12">
+                            <a href="https://pixabay.com/" >
+                                Images by <i><img src="images/logo.png"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-            <script src="/scripts/client.js"></script>
-        </body>
-        </html>
+
+        <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+        <script src="/scripts/client.js"></script>
+    </body>
+    </html>

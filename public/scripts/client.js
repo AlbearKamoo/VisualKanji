@@ -32,29 +32,38 @@ socket.on('words', function(data){
 
   container.innerHTML = '';
 
-  for(var i=0;i<data['words'].length && i<3;i++){
+  for(var i=0;i<3;i++){
     column = document.createElement('div')
     div = document.createElement('div')
-    column.className = 'col-md-4';
-    div.className = 'wordDisplay';
 
-    word = document.createElement('h2');
-    word.innerHTML = data['words'][i]['word'];
+    if(i == 0){
+        column.className = 'col-lg-2 offset-lg-3';
+    }
+    else{
+        column.className = 'col-lg-2';
+    }
 
-    reading = document.createElement('p');
-    reading.className = 'kanaReading';
-    reading.innerHTML = data['words'][i]['reading'];
+    if(i < data['words'].length){
+        div.className = 'wordDisplay';
 
-    meanings = document.createElement('h3')
-    meanings.className = 'wordMeanings';
+        word = document.createElement('h2');
+        word.innerHTML = data['words'][i]['word'];
 
-    // Prettify word meanings
-    var merged = [].concat.apply([], data['words'][i]['meanings']);
-    meanings.innerHTML = merged.join(', ');
+        reading = document.createElement('p');
+        reading.className = 'kanaReading';
+        reading.innerHTML = data['words'][i]['reading'];
 
-    div.appendChild(word);
-    div.appendChild(reading);
-    div.appendChild(meanings);
+        meanings = document.createElement('h3')
+        meanings.className = 'wordMeanings';
+
+        // Prettify word meanings
+        var merged = [].concat.apply([], data['words'][i]['meanings']);
+        meanings.innerHTML = merged.join(', ');
+
+        div.appendChild(word);
+        div.appendChild(reading);
+        div.appendChild(meanings);
+    }
     column.appendChild(div);
     container.appendChild(column);
   }
