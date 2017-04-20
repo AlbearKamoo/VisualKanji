@@ -81,7 +81,7 @@ function parseResponse(body, callback){
       }
     }
   }
-  console.dir(object, {depth: 5})
+  //console.dir(object, {depth: 5})
   callback(object)
 }
 
