@@ -60,8 +60,20 @@ button {
     color: white;
     text-align: center;
     text-decoration: none;
-    font-family: wordFont, "Arial", sans-serif;
+    font-family: "Helvetica", "Arial", sans-serif;
     font-size: 18px;
+    width: 126px;
+    cursor: pointer;
+    outline: none;
+}
+
+button:active {
+    background-color: #184EA4;
+    outline: none;
+}
+
+button:focus {
+    outline: none;
 }
 
 input:focus{
@@ -86,7 +98,7 @@ input:focus{
 
 .center-img {
     display:inline-block;
-    max-width: 75%;
+    max-width: 70%;
     max-height: 24em;
     object-fit: contain;
 }

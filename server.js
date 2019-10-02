@@ -12,7 +12,7 @@ function queryMongo(callback){
   MongoClient.connect(url, function(err, client) {
     if (err) console.warn('Error connecting to database', err);
     console.log("Connected correctly to database server.");
-    getRandomKanji(client, function(doc){
+    queryRandomKanji(client, function(doc){
       client.close();
       callback(doc)
     })
@@ -20,7 +20,7 @@ function queryMongo(callback){
 }
 
 // Retrieves a random document from mongo database using an aggregator
-function getRandomKanji(client, callback){
+function queryRandomKanji(client, callback){
   var db = client.db('visualkanji');
   var random = db.collection('kanji').aggregate([{ $sample: { size: 1 }}])
   random.each(function(err, doc) {
@@ -55,7 +55,7 @@ function loadWords(kanji, callback){
 // Parses the JSON reponse retrived from the jisho.org API
 function parseResponse(body, callback){
   var object = {
-    "words" : []
+    words : []
   }
   var jsonBody = JSON.parse(body)
 
@@ -71,11 +71,10 @@ function parseResponse(body, callback){
           meanings.push(entry['senses'][j]['english_definitions'])
           if (meanings.length == 3) { break }
         }
-        console.dir(meanings);
         object['words'].push({
-            "word" : word,
-            "reading" : reading,
-            "meanings" : meanings
+          word : word,
+          reading : reading,
+          meanings : meanings
         });
 
         if (object['words'].length == 3) { break }
@@ -87,28 +86,37 @@ function parseResponse(body, callback){
 }
 
 // On coonection with client, execute main service routine
-io.on('connection', function(client) {
-  console.log('Client connected...');
-  client.on('join', function(data) {
-    queryMongo(function(doc){
-      var kanjiLiteral = doc['literal'];
-      loadWords(kanjiLiteral, function(words){
-        if(words['words'].length == 0){
-            client.emit('retry', words);
+function getRandomKanji (req, res, next) {
+  queryMongo(function(doc) {
+    res.json(doc);
+  });
+}
+
+function getRandomKanjiInfo (req, res, next) {
+  queryMongo(function(doc) {
+    var kanjiLiteral = doc['literal'];
+    loadWords(kanjiLiteral, function(words){
+      if (words['words'].length == 0) {
+        res.status(404).send('No Words Found');
+      }
+      else {
+        var resObj = {
+          kanji: doc,
+          words: words
         }
-        else{
-            client.emit('kanji', doc);
-            client.emit('words', words)
-        }
-      })
+        res.json(resObj);
+      }
     })
   });
-});
+}
 
 // Serve HTML page when GET request is received from client
 app.get('/', function(req, res,next) {
   res.sendFile(__dirname + '/index.html');
 });
+
+app.get('/kanji/random', getRandomKanji);
+app.get('/kanji/random/info', getRandomKanjiInfo);
 
 // Make files in the public directory acessible
 app.use(express.static(__dirname + '/public'))
