@@ -1,5 +1,5 @@
 var MongoClient = require('mongodb').MongoClient;
-var http = require('http')
+var https = require('https')
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
@@ -9,32 +9,33 @@ var io = require('socket.io')(server);
 function queryMongo(callback){
   //var url = 'mongodb://localhost:27017/visualKanji';
   var url = 'mongodb://test:test@ds041546.mlab.com:41546/visualkanji'
-  MongoClient.connect(url, function(err, db) {
-    if (err) console.log(err);
-    console.log("Connected correctly to databse server.");
-    getRandomKanji(db, function(doc){
-      db.close();
+  MongoClient.connect(url, function(err, client) {
+    if (err) console.warn('Error connecting to database', err);
+    console.log("Connected correctly to database server.");
+    getRandomKanji(client, function(doc){
+      client.close();
       callback(doc)
     })
   });
 }
 
 // Retrieves a random document from mongo database using an aggregator
-function getRandomKanji(db, callback){
+function getRandomKanji(client, callback){
+  var db = client.db('visualkanji');
   var random = db.collection('kanji').aggregate([{ $sample: { size: 1 }}])
   random.each(function(err, doc) {
-    if (err) console.log(err);
-    if (doc != null) {
-      callback(doc)
+    if (err) console.log('Error retriving random kanji', err);
+    if (doc !== null && doc !== undefined) {
+      callback(doc);
     } else {
-      db.close();
+      client.close();
     }
    });
 }
 
 // Uses the jisho.org API to obtain dictionary data for given kanji character
 function loadWords(kanji, callback){
-  var req = http.get('http://jisho.org/api/v1/search/words?keyword=' + encodeURI(kanji), function(res){
+  var req = https.get('https://jisho.org/api/v1/search/words?keyword=' + encodeURI(kanji), function(res){
     res.setEncoding('utf8');
 
     var body = ''
@@ -43,7 +44,7 @@ function loadWords(kanji, callback){
     });
 
     res.on('end', () => {
-      console.log(res.statusCode)
+      console.log('GET jisho-api', res.statusCode);
       parseResponse(body, function(object){
         callback(object)
       });
@@ -70,7 +71,7 @@ function parseResponse(body, callback){
           meanings.push(entry['senses'][j]['english_definitions'])
           if (meanings.length == 3) { break }
         }
-        console.dir(meanings)
+        console.dir(meanings);
         object['words'].push({
             "word" : word,
             "reading" : reading,
@@ -89,9 +90,9 @@ function parseResponse(body, callback){
 io.on('connection', function(client) {
   console.log('Client connected...');
   client.on('join', function(data) {
-    console.log(data);
     queryMongo(function(doc){
-      loadWords(doc['literal'], function(words){
+      var kanjiLiteral = doc['literal'];
+      loadWords(kanjiLiteral, function(words){
         if(words['words'].length == 0){
             client.emit('retry', words);
         }
