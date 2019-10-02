@@ -9,8 +9,8 @@ socket.on('connect', function(data) {
 });
 
 socket.on('kanji', function(data){
-  literal = data['literal']
-  document.getElementById("kanji").innerHTML = literal
+  literal = data['literal'];
+  document.getElementById("kanji").innerHTML = literal;
   if(typeof(data['meaning']) == 'string'){
     meaning = capitalizeFirst(data['meaning']);
   } else{
@@ -24,26 +24,21 @@ socket.on('retry', function(data) {
 })
 
 socket.on('words', function(data){
-  var div
-  var word
-  var reading
-  var meanings
+  var div;
+  var word;
+  var reading;
+  var meanings;
   var container = document.getElementById('wordContainer');
 
   container.innerHTML = '';
 
-  for(var i=0;i<3;i++){
-    column = document.createElement('div')
-    div = document.createElement('div')
+  for (var i=0;i<3;i++){
+    if (i < data['words'].length){
+        column = document.createElement('div');
+        div = document.createElement('div');
 
-    if(i == 0){
-        column.className = 'col-lg-2 offset-lg-3';
-    }
-    else{
-        column.className = 'col-lg-2';
-    }
+        column.className = 'col-lg-4';
 
-    if(i < data['words'].length){
         div.className = 'wordDisplay';
 
         word = document.createElement('h2');
@@ -63,9 +58,10 @@ socket.on('words', function(data){
         div.appendChild(word);
         div.appendChild(reading);
         div.appendChild(meanings);
+
+        column.appendChild(div);
+        container.appendChild(column);
     }
-    column.appendChild(div);
-    container.appendChild(column);
   }
 })
 
