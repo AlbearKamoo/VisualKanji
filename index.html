@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
     <div class="container">
         <h1 id="kanji" onmouseover="showMeaning(this)" onmouseout="showLiteral(this)">kanji</p>
     </div>
@@ -27,28 +26,29 @@
         </div>
 
         <div class="container-fluid">
-            <div class="row">
+            <div>
                 <!-- <div class="col-lg-6 offset-lg-3">
                     <div id="wordContainer" class="row">
                     </div>
                 </div> -->
-                <div id="wordContainer">
+                <div id="wordContainer" class="row justify-content-center">
                     <div class="col-lg-9">
                     </div>
                 </div>
-                <div class="col-lg-2" align="center">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <button type="button" onclick="refresh()">New Kanji!</button>
-                        </div>
-                        <div class="col-lg-12">
-                            <a href="https://pixabay.com/" >
-                                Images by <i><img src="images/logo.png"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </div>
+        </div>
+
+        <div class="options-container">
+          <div class="row">
+              <div class="col-lg-12">
+                  <button type="button" onclick="refresh()">New Kanji!</button>
+              </div>
+              <div class="col-lg-12">
+                  <a href="https://pixabay.com/" >
+                      Images by <i><img src="images/logo.png"></i>
+                  </a>
+              </div>
+          </div>
         </div>
 
 

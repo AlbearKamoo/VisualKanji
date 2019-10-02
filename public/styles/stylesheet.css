@@ -13,7 +13,7 @@
     src: url(irohamaru-mikami-Regular.ttf);
 }
 
-body{
+body {
     background-color: #F2FAFC;
 }
 
@@ -26,7 +26,7 @@ h2 {
     font-weight: bold;
 }
 
-h3{
+h3 {
     margin: 5px;
     font-weight: bold;
 }
@@ -78,15 +78,17 @@ input:focus{
 }
 
 #wordContainer{
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 15%;
+    margin-right: 15%;
     text-align: center;
+    max-width: 70%;
 }
 
 .center-img {
     display:inline-block;
-    width: 75%;
-    max-height: 32em;
+    max-width: 75%;
+    max-height: 24em;
+    object-fit: contain;
 }
 
 .nav-img{
@@ -127,4 +129,21 @@ input:focus{
     margin-bottom: 8px;
     font-family: meaningsFont;
     font-size: 1.2rem;
+}
+
+.options-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+@media only screen and (max-width: 800px) {
+  .options-container {
+      margin-top: 20px;
+      position: relative;
+      display: block;
+      text-align: center;
+      top: 0;
+      left: 0;
+  }
 }
