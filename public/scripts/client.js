@@ -61,6 +61,7 @@ function displayWords(data) {
 }
 
 function getNewKanji() {
+  setLoading(true);
   getRandomKanji(function(kanjiInfo) {
     var kanjiDoc = kanjiInfo.kanji;
     var words = kanjiInfo.words;
@@ -76,6 +77,18 @@ function getNewKanji() {
 
     displayWords(words);
   })
+}
+
+function setLoading(loadingState) {
+  var loadingIndicator = document.getElementById('loadingIndicator');
+  var meaningPic = document.getElementById('meaningPic')
+  if (loadingState) {
+    loadingIndicator.classList.remove('hidden');
+    meaningPic.classList.add('hidden');
+  } else {
+    loadingIndicator.classList.add('hidden');
+    meaningPic.classList.remove('hidden');
+  }
 }
 
 function getImageURL(meaning, callback){
@@ -122,10 +135,11 @@ function setImage(response){
   }
 
   document.getElementById("meaningPic").src = imageSources[0];
+  setLoading(false);
   index = 0;
 }
 
-function nextImage(){
+function nextImage() {
   if(imageSources.length == 0){
       return;
   }

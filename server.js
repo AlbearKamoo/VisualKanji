@@ -85,13 +85,14 @@ function parseResponse(body, callback){
   callback(object)
 }
 
-// On coonection with client, execute main service routine
+// Retrieve random kanji basic data through GET request
 function getRandomKanji (req, res, next) {
   queryMongo(function(doc) {
     res.json(doc);
   });
 }
 
+// Retrieve random kanji info and words through GET request
 function getRandomKanjiInfo (req, res, next) {
   queryMongo(function(doc) {
     var kanjiLiteral = doc['literal'];
